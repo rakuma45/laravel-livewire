@@ -12,6 +12,7 @@
 </head>
 
 <body style="background-color: #eff2f6;">
+    @include('partials.navbar')
     <div class="container py-4">
         @yield('content')
     </div>
