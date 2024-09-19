@@ -28,7 +28,7 @@
                                   <td>{{ $book->qty }}</td>
                                   <td>{{ $book->writer }}</td>
                                   <td>
-                                      <button class="btn btn-success btn-sm">Edit</button>
+                                      <button wire:click="edit({{ $book->id }})" class="btn btn-success btn-sm">Edit</button>
                                       <button class="btn btn-danger btn-sm">Delete</button>
                                   </td>
                               </tr>
@@ -46,10 +46,14 @@
   <div class="col-md-4">
     <div class="card border-0">
         <div class="card-header bg-white py-3">
-            <h6 class="mb-0">Form Create</h6>
+            <h6 class="mb-0">Form {{ $isEdit ? 'Edit' : 'Create' }}</h6>
         </div>
         <div class="card-body">
-            <livewire:book-create>
+            @if ($isEdit)
+                <livewire:book-edit :book-id="$selectedBookId">
+            @else
+                <livewire:book-create>
+            @endif
         </div>
     </div>
   </div>
