@@ -18,7 +18,13 @@ class BookCreate extends Component
 
     public function store()
     {
-        # code...
+        //validasi
+        $this->validate([
+            'title' => 'required',
+            'qty' => 'required|numeric',
+            'writer' => 'required',
+        ]);
+
         //memasukkan data ke tabel books
         Book::create([
             'title' => $this->title,

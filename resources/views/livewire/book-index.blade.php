@@ -1,5 +1,5 @@
 {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-<div class="row justify-content-center align-items-center">
+<div class="row justify-content-center">
   <div class="col-md-8">
       <div class="card border-0">
           <div class="card-body">
@@ -9,6 +9,9 @@
                 {{ session('success') }}
               </div>
               @endif
+              <div class="mb-3">
+                <input type="text" class="form-control" wire:model="search" placeholder="Searching...">
+              </div>
               <div class="table-responsive">
                   <table class="table table-striped table-bordered">
                       <thead class="border-top">
@@ -29,7 +32,7 @@
                                   <td>{{ $book->writer }}</td>
                                   <td>
                                       <button wire:click="edit({{ $book->id }})" class="btn btn-success btn-sm">Edit</button>
-                                      <button class="btn btn-danger btn-sm">Delete</button>
+                                      <button wire:click="delete({{ $book->id }})" class="btn btn-danger btn-sm">Delete</button>
                                   </td>
                               </tr>
                           @empty
@@ -40,6 +43,7 @@
                       </tbody>
                   </table>
               </div>
+               {{ $books->links() }}
           </div>
       </div>
   </div>
