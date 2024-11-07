@@ -10,13 +10,14 @@
               </div>
               @endif
               <div class="mb-3">
-                <input type="text" class="form-control" wire:model="search" placeholder="Searching...">
+                <input type="text" class="form-control" wire:model="search" placeholder="Cari Buku...">
               </div>
               <div class="table-responsive">
                   <table class="table table-striped table-bordered">
                       <thead class="border-top">
                           <tr>
                               <th width="10">No</th>
+                              <th>Cover</th>
                               <th>Judul</th>
                               <th>Qty</th>
                               <th>Penulis</th>
@@ -27,6 +28,9 @@
                           @forelse ($books as $book)
                               <tr>
                                   <td>{{ $loop->iteration }}</td>
+                                  <td>
+                                    <img src="{{ asset('/storage/books/'.$book->image) }}" class="rounded" style="width: 150px">
+                                  </td>
                                   <td>{{ $book->title }}</td>
                                   <td>{{ $book->qty }}</td>
                                   <td>{{ $book->writer }}</td>
@@ -37,7 +41,7 @@
                               </tr>
                           @empty
                               <tr>
-                                  <td colspan="5" align="center">-tidak ada data-</td>
+                                  <td colspan="5" align="center">- Tidak ada data -</td>
                               </tr>
                           @endforelse
                       </tbody>
